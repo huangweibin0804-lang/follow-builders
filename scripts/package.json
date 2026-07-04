@@ -1,0 +1,18 @@
+{
+  "name": "follow-builders-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for Follow Builders skill — feed generation, digest preparation, delivery",
+  "type": "module",
+  "scripts": {
+    "generate-feed": "node generate-feed.js",
+    "prepare-digest": "node prepare-digest.js",
+    "send-feishu-digest": "node send-feishu-digest.js",
+    "build-bilingual-digest": "node build-bilingual-digest.js",
+    "send-feishu-api": "node send-feishu-api.js",
+    "deliver-daily-feishu-digest": "node deliver-daily-feishu-digest.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "proper-lockfile": "^4.1.0"
+  }
+}
