@@ -140,13 +140,15 @@ function extractChatCompletionsText(data) {
 }
 
 async function generateWithOpenAI(prompt) {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.LLM_API_KEY || process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    throw new Error('OPENAI_API_KEY is required');
+    throw new Error('LLM_API_KEY or OPENAI_API_KEY is required');
   }
 
-  const model = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  const baseUrl = (process.env.LLM_BASE_URL || 'https://api.openai.com/v1').replace(/\/$/, '');
+  const defaultModel = /deepseek\.com/i.test(baseUrl) ? 'deepseek-v4-pro' : 'gpt-4.1-mini';
+  const model = process.env.LLM_MODEL || process.env.OPENAI_MODEL || defaultModel;
+  const response = await fetch(`${baseUrl}/chat/completions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -170,12 +172,12 @@ async function generateWithOpenAI(prompt) {
 
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`OpenAI API error: ${data?.error?.message || response.status}`);
+    throw new Error(`LLM API error: ${data?.error?.message || response.status}`);
   }
 
   const text = extractChatCompletionsText(data);
   if (!text) {
-    throw new Error('OpenAI returned empty content');
+    throw new Error('LLM returned empty content');
   }
   return text;
 }

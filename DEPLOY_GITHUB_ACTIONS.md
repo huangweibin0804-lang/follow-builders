@@ -13,8 +13,12 @@ Add these repository secrets in GitHub:
 
 Optional repository variable:
 
+- `LLM_BASE_URL`
+  - DeepSeek: `https://api.deepseek.com`
+- `LLM_MODEL`
+  - DeepSeek recommended value: `deepseek-v4-pro`
 - `OPENAI_MODEL`
-  - Recommended starter value: `gpt-4.1-mini`
+  - Optional fallback for OpenAI runs: `gpt-4.1-mini`
 
 ## Schedule
 

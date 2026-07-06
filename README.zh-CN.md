@@ -119,7 +119,9 @@ cd ~/.claude/skills/follow-builders/scripts && npm install
 
 可选 GitHub Actions Variable：
 
-- `OPENAI_MODEL`，建议先填 `gpt-4.1-mini`
+- `LLM_BASE_URL`，如果走 DeepSeek，填 `https://api.deepseek.com`
+- `LLM_MODEL`，如果走 DeepSeek，建议填 `deepseek-v4-pro`
+- `OPENAI_MODEL`，如果后续切回 OpenAI，可填 `gpt-4.1-mini`
 
 部署步骤见 [DEPLOY_GITHUB_ACTIONS.md](DEPLOY_GITHUB_ACTIONS.md)。
 

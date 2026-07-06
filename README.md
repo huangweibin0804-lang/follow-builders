@@ -127,7 +127,9 @@ Required GitHub Actions secrets:
 
 Optional GitHub Actions variable:
 
-- `OPENAI_MODEL` (recommended starter value: `gpt-4.1-mini`)
+- `LLM_BASE_URL` (DeepSeek: `https://api.deepseek.com`)
+- `LLM_MODEL` (DeepSeek recommended value: `deepseek-v4-pro`)
+- `OPENAI_MODEL` (optional fallback for OpenAI runs: `gpt-4.1-mini`)
 
 See [DEPLOY_GITHUB_ACTIONS.md](DEPLOY_GITHUB_ACTIONS.md) for the deployment steps.
 
